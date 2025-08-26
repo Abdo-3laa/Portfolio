@@ -29,6 +29,11 @@ body {
     font-size: 1.08rem;
     line-height: 1.7;
 }
+html {
+  scroll-behavior: smooth;
+}
+
+
 
 /* Header */
 header {
@@ -92,6 +97,48 @@ header {
   display: none;
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-collapse.show {
+  animation: slideDown 0.4s ease forwards;
+}
+
+/* Links hover animation */
+.navbar-nav .nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #ffe082;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffe082;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .navigation {
@@ -136,6 +183,83 @@ header {
   }
 }
 
+/* Keyframes */
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* تطبيق على الهيدر */
+header {
+  animation: fadeSlideDown 1s ease forwards;
+}
+
+/* تطبيق على اللينكات */
+.navigation a {
+  opacity: 0;
+  animation: fadeSlideUp 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* ندي كل لينك Delay مختلف */
+.navigation a:nth-child(1) {
+  animation-delay: 0.6s;
+}
+.navigation a:nth-child(2) {
+  animation-delay: 0.8s;
+}
+.navigation a:nth-child(3) {
+  animation-delay: 1s;
+}
+
+
+/* Hover Animation */
+.navigation a {
+  position: relative;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease forwards;
+  animation-delay: 0.4s;
+  transition: all 0.3s ease-in-out;
+}
+
+.navigation a:hover {
+  color: #ffe082;
+  transform: scale(1.1);   /* تكبير خفيف */
+}
+
+/* Underline Animation */
+.navigation a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #ffe082;
+  transition: width 0.3s ease-in-out;
+}
+
+.navigation a:hover::after {
+  width: 100%;
+}
+
 
 /* Section padding */
 section {
@@ -160,7 +284,7 @@ section {
     align-items: center;
     background: 
         linear-gradient(120deg, #232946cc 60%, #181f2acc 100%),
-        url('images/wp8778419.png') no-repeat center center/cover;
+        url(../images/wp8778419.png) no-repeat center center/cover;
     background-attachment: fixed;
     position: relative;
     overflow: hidden;
@@ -192,9 +316,25 @@ section {
 
 .main h2 {
     color: #1746a2;
-    font-size: 2.1em;
+    font-size: 1.8em;
     font-weight: 500;
     margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #1746a2;
+    width: 0;
+    animation: typing 2s steps(30, end) forwards, blink 0.8s infinite;
+}
+@keyframes typing {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
 
 
@@ -212,6 +352,15 @@ section {
     font-weight: 500;
     margin-top: 10px;
     margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards 2.2s;
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .main-btn {
@@ -228,7 +377,28 @@ section {
     transition: 0.3s;
     border: none;
     box-shadow: 0 2px 12px #3a6cf433;
+     opacity: 0;
+    transform: scale(0.5);
+    animation: bounceIn 1s ease forwards 3s;
+    animation-fill-mode: forwards; 
+    
 }
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
 
 .main-btn:hover {
     background: #1746a2;
@@ -260,6 +430,7 @@ section {
     justify-content: center;
     min-width: 260px;
     position: relative;
+    
 }
 
 .main-image img {
@@ -276,7 +447,17 @@ section {
     position: relative;
     z-index: 1;
     margin-top: 10px ;
+     opacity: 0;
+    transform: scale(0.8);
+    animation: zoomIn 1s ease forwards 2s;
 }
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 .main-image img:hover {
     transform: scale(1.04) rotate(-2deg);
@@ -301,6 +482,42 @@ section {
         height: 180px;
     }
 }
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #4e9eff, 0 0 10px #4e9eff, 0 0 20px #4e9eff;
+  }
+  50% {
+    text-shadow: 0 0 10px #ffe082, 0 0 20px #ffe082, 0 0 40px #4e9eff;
+  }
+  100% {
+    text-shadow: 0 0 5px #4e9eff, 0 0 10px #4e9eff, 0 0 20px #4e9eff;
+  }
+}
+
+/* Bounce effect */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+.logo {
+  animation: glow 3s infinite ease-in-out, bounce 2s ease infinite;
+}
+
+
+
+
+
+
+
 
 /* على الموبايل */
 @media (max-width: 768px) {
@@ -747,3 +964,5 @@ section {
     color: #3a6cf4;
     transform: scale(1.15) rotate(-8deg);   transform: scale(1.15) rotate(-8deg);
 }
+
+
