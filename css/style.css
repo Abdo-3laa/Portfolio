@@ -284,7 +284,7 @@ section {
     align-items: center;
     background: 
         linear-gradient(120deg, #232946cc 60%, #181f2acc 100%),
-        url(../images/wp8778419.png) no-repeat center center/cover;
+        url(../images/Meeee.jpg) no-repeat center center/cover;
     background-attachment: fixed;
     position: relative;
     overflow: hidden;
@@ -294,24 +294,26 @@ section {
 .main-flex {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* بدل center خليها على الشمال */
     gap: 120px;
     width: 100%;
     position: relative;
     z-index: 1;
+    padding-left: 50px; /* مسافة من الشمال */
 }
 
 .main-content {
-    max-width:500px;
+    max-width: 500px;
     z-index: 2;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; /* نصوص على الشمال */
     background: rgba(35,41,70,0.92);
     padding: 36px 32px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     backdrop-filter: blur(2px);
+    text-align: left; /* نصوص على الشمال */
 }
 
 .main h2 {
@@ -325,6 +327,22 @@ section {
     width: 0;
     animation: typing 2s steps(30, end) forwards, blink 0.8s infinite;
 }
+@media (max-width: 1023px) {
+    .main-flex {
+        flex-direction: column-reverse;
+        gap: 32px;
+        text-align: center;
+        padding-left: 0; /* تلغي المسافة على الهواتف */
+        justify-content: center;
+    }
+    .main-content {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+}
+
+
 @keyframes typing {
   to {
     width: 100%;
@@ -436,47 +454,6 @@ section {
     transform: scale(1.15) rotate(-8deg);
 }
 
-.main-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 260px;
-    position: relative;
-    
-}
-
-.main-image img {
-    width: 100%;
-    height: auto;
-    max-width: 300px;
-    object-fit: cover;
-    border-radius: 19px; /* Square with soft corners */
-    border: 6px solid #3a6cf4;
-    box-shadow: 0 8px 32px #3a6cf433, 0 2px 8px #0002;
-    background: #232946;
-    padding: 0;
-    transition: transform 0.4s, box-shadow 0.4s;
-    position: relative;
-    z-index: 1;
-    margin-top: 10px ;
-     opacity: 0;
-    transform: scale(0.8);
-    animation: zoomIn 1s ease forwards 0.5s;
-}
-
-
-
-.main-image img:hover {
-     transform: scale(1.08) rotate(-2deg);
-    box-shadow: 0 24px 64px #3a6cf444, 0 8px 32px #0003;
-        filter: brightness(1.08) saturate(1.1);
-}
-@keyframes zoomIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
 @media (max-width: 1023px) {
     .main-flex {
