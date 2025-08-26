@@ -109,7 +109,7 @@ header {
 }
 
 .navbar-collapse.show {
-  animation: slideDown 0.4s ease forwards;
+  animation: slideDown 0.3s ease forwards;
 }
 
 /* Links hover animation */
@@ -126,7 +126,7 @@ header {
   width: 0%;
   height: 2px;
   background: #ffe082;
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
 }
 
 .navbar-nav .nav-link:hover {
@@ -316,8 +316,8 @@ section {
 
 .main h2 {
     color: #1746a2;
-    font-size: 1.8em;
-    font-weight: 500;
+    font-size: 1.5em;
+    font-weight: 480;
     margin-bottom: 10px;
     white-space: nowrap;
     overflow: hidden;
@@ -399,12 +399,24 @@ section {
 }
 
 
+.main-buttons {
+  display: flex;
+  gap: 20px; /* مسافة بين الأزرار */
+  flex-wrap: wrap;
+}
 
-.main-btn:hover {
+.cv-btn {
+   background: linear-gradient(135deg, #3a6cf4 0%, #4e9eff 100%);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.main-btn:hover,.cv-btn:hover {
     background: #1746a2;
     color: #ffe082;
     transform: scale(1.07);
 }
+
 
 .social-icons a {
     color: #1746a2;
@@ -449,20 +461,21 @@ section {
     margin-top: 10px ;
      opacity: 0;
     transform: scale(0.8);
-    animation: zoomIn 1s ease forwards 2s;
+    animation: zoomIn 1s ease forwards 0.5s;
+}
+
+
+
+.main-image img:hover {
+     transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 24px 64px #3a6cf444, 0 8px 32px #0003;
+        filter: brightness(1.08) saturate(1.1);
 }
 @keyframes zoomIn {
   to {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-
-.main-image img:hover {
-    transform: scale(1.04) rotate(-2deg);
-    box-shadow: 0 24px 64px #3a6cf444, 0 8px 32px #0003;
-    filter: brightness(1.08) saturate(1.1);
 }
 
 @media (max-width: 1023px) {
