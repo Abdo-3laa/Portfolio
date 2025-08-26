@@ -584,9 +584,9 @@ section {
     filter: brightness(1.08) saturate(1.1);
 }
 .skills .skill-logo {
-    width: 54px;
-    height: 54px;
-    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
     filter: drop-shadow(0 2px 8px #3a6cf41a);
     transition: transform 0.2s, box-shadow 0.2s;
     background: #181f2a;
@@ -603,15 +603,27 @@ section {
 }
 
 .skills span {
-    font-size: 1.08em;
+    font-size: 1.6rem;
     font-weight: 600;
+    line-height: 1.6;
     color: var(--accent);
     letter-spacing: 0.5px;
 }
 
 .skills .row {
     gap: 0;
+     row-gap: 30px;
 }
+
+#skills .row > div {
+    margin-bottom: 40px; /* مسافة تحت كل كارد */
+}
+
+/* لو حابب مسافة أفقية أكبر بين الكاردات */
+#skills .row {
+    gap: 100px; /* بين الكاردات أفقياً */
+}
+
 
 @media (max-width: 991px) {
     .skills .skill-logo {
@@ -711,6 +723,14 @@ section {
     font-size: 1em;
     margin-bottom: 0;
     line-height: 1.6;
+}
+
+#projects .row > div {
+    margin-bottom: 40px; /* مسافة تحت كل كارد */
+}
+
+#projects .row {
+    gap: 30px; /* مسافة أفقية بين الكاردات */
 }
 
 /* Responsive grid for project cards */
